@@ -1,0 +1,778 @@
+/* ==========================================================================
+   Digital Trading Card - style.css
+   Pure Futura Typography & Aesthetic Oceanic Water Theme
+   ========================================================================== */
+
+:root {
+  /* Unified Futura Typography */
+  --font-futura: "Futura", "Futura-Medium", "Futura LT", "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Oceanic Color Palette - Refined & Aesthetic */
+  --bg-page-start: #0e2a47;
+  --bg-page-mid: #081729;
+  --bg-page-end: #030813;
+  
+  --card-glass-start: rgba(14, 42, 71, 0.92);
+  --card-glass-mid: rgba(10, 29, 50, 0.94);
+  --card-glass-end: rgba(6, 17, 31, 0.97);
+
+  --card-border: rgba(125, 211, 252, 0.35);
+  --card-border-glow: rgba(56, 189, 248, 0.25);
+  
+  --accent-cyan: #38bdf8;
+  --accent-aqua: #7dd3fc;
+  --accent-seafoam: #a5f3fc;
+  --accent-marine: #0284c7;
+  --accent-deep-navy: #082542;
+  
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  
+  --surface-glass: rgba(12, 33, 56, 0.6);
+  --surface-glass-border: rgba(125, 211, 252, 0.18);
+  
+  /* Radii */
+  --card-radius: 20px;
+  --inner-radius: 13px;
+  --pill-radius: 9999px;
+  
+  /* Delicate Multi-layer Depth Shadow */
+  --card-shadow: 0 20px 45px -12px rgba(2, 6, 23, 0.8),
+                 0 8px 18px -4px rgba(2, 6, 23, 0.5),
+                 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Base Reset & Centering */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-futura);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 15%, var(--bg-page-start) 0%, var(--bg-page-mid) 50%, var(--bg-page-end) 100%);
+  color: var(--text-primary);
+  font-family: var(--font-futura);
+  padding: 1.5rem 1.25rem;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea {
+  font-family: var(--font-futura);
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1.35rem;
+}
+
+/* 3D Perspective Card Container */
+.card-container {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Trading Card (3D Flipping Element) */
+.trading-card {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.34, 1.2, 0.64, 1);
+  cursor: pointer;
+}
+
+/* 3D Flip Trigger: Point / Hover at it, or mobile tap */
+.card-container:hover .trading-card,
+.trading-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Card Faces Base Styles */
+.card-face {
+  width: 100%;
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  user-select: none;
+  box-sizing: border-box;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Front Face */
+.card-front {
+  position: relative;
+  transform: rotateY(0deg);
+  background: linear-gradient(165deg, var(--card-glass-start) 0%, var(--card-glass-mid) 50%, var(--card-glass-end) 100%);
+  border: 1.5px solid var(--card-border);
+}
+
+/* Back Face */
+.card-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  background: linear-gradient(165deg, #0f2c4a 0%, #091c30 50%, #05101d 100%);
+  border: 1.5px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  justify-content: space-between;
+}
+
+/* Soft Water Sheen Overlay */
+.card-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius);
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 35%,
+    rgba(125, 211, 252, 0.18) 48%,
+    rgba(240, 249, 255, 0.22) 52%,
+    rgba(56, 189, 248, 0.12) 65%,
+    transparent 80%
+  );
+  opacity: 0.6;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+.trading-card:hover .card-sheen {
+  opacity: 0.9;
+}
+
+/* ==========================================================================
+   Front Face Elements
+   ========================================================================== */
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-type-badge {
+  background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+  padding: 0.22rem 0.6rem;
+  border-radius: var(--pill-radius);
+  color: var(--accent-aqua);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-hp {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  background: rgba(3, 12, 24, 0.5);
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--pill-radius);
+  border: 1px solid var(--surface-glass-border);
+}
+
+.hp-label {
+  font-size: 0.74rem;
+  color: #f43f5e;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.hp-value {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+/* Artwork Frame */
+.card-art-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--inner-radius);
+  overflow: hidden;
+  border: 1px solid rgba(125, 211, 252, 0.25);
+  box-shadow: inset 0 2px 10px rgba(2, 6, 23, 0.5), 0 4px 12px rgba(2, 6, 23, 0.4);
+}
+
+.art-backdrop {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, #0369a1 0%, #082542 65%, #030d1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.art-avatar {
+  width: 68%;
+  height: 68%;
+  filter: drop-shadow(0 6px 12px rgba(2, 6, 23, 0.6));
+  transition: transform 0.4s ease;
+}
+
+.trading-card:hover .art-avatar {
+  transform: scale(1.04);
+}
+
+.card-id-tag {
+  position: absolute;
+  bottom: 6px;
+  right: 8px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: rgba(4, 13, 26, 0.85);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  color: #7dd3fc;
+  border: 1px solid var(--surface-glass-border);
+}
+
+/* Identity & Content Section */
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card-name {
+  font-size: 1.55rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #f8fafc;
+  word-break: break-word;
+}
+
+.card-major {
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--accent-aqua);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  letter-spacing: 0.03em;
+}
+
+/* Stats Row */
+.card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  margin-top: 0.1rem;
+}
+
+.stat-pill {
+  background: var(--surface-glass);
+  border: 1px solid var(--surface-glass-border);
+  border-radius: 10px;
+  padding: 0.35rem 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.stat-value {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #e0f2fe;
+}
+
+/* Special Ability Section (Card Feature / Attack Style) */
+.ability-container {
+  background: rgba(9, 27, 47, 0.65);
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: var(--inner-radius);
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  box-shadow: inset 0 1px 4px rgba(2, 6, 23, 0.3);
+}
+
+.ability-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ability-icon {
+  font-size: 1.05rem;
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
+}
+
+.ability-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #f0f9ff;
+  letter-spacing: 0.02em;
+}
+
+.ability-tag {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #7dd3fc;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.12rem 0.45rem;
+  border-radius: var(--pill-radius);
+  margin-left: auto;
+  letter-spacing: 0.08em;
+}
+
+.ability-description {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+/* Card Footers */
+.card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(125, 211, 252, 0.15);
+  padding-top: 0.45rem;
+  margin-top: auto;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   Back Face Elements (Water Type Fun Fact Showcase)
+   ========================================================================== */
+
+.back-header {
+  border-bottom: 1px solid rgba(125, 211, 252, 0.15);
+  padding-bottom: 0.35rem;
+}
+
+.back-badge {
+  color: var(--accent-aqua);
+}
+
+.back-id {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #7dd3fc;
+  letter-spacing: 0.06em;
+}
+
+/* Back Center Water Seal / Emblem */
+.back-emblem-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0;
+}
+
+.back-emblem-ring {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 2px dashed rgba(56, 189, 248, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.25) 0%, rgba(8, 28, 48, 0.8) 75%);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+  animation: emblemSpin 22s linear infinite;
+}
+
+.back-emblem-core {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0284c7, #07233d);
+  border: 1px solid rgba(224, 242, 254, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-emblem-icon {
+  font-size: 1.6rem;
+  filter: drop-shadow(0 2px 6px rgba(2, 6, 23, 0.6));
+}
+
+@keyframes emblemSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Fun Fact Section */
+.fun-fact-section {
+  background: rgba(9, 27, 47, 0.7);
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: var(--inner-radius);
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: inset 0 1px 4px rgba(2, 6, 23, 0.3);
+}
+
+.fun-fact-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fun-fact-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #7dd3fc;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--pill-radius);
+  text-transform: uppercase;
+}
+
+.fun-fact-text {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  text-align: center;
+  padding: 0 0.15rem;
+}
+
+/* Trivia Chips */
+.trivia-chips {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.15rem;
+}
+
+.trivia-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(5, 17, 31, 0.5);
+  border: 1px solid rgba(125, 211, 252, 0.15);
+  border-radius: 7px;
+  padding: 0.28rem 0.5rem;
+  font-size: 0.72rem;
+}
+
+.trivia-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+}
+
+.trivia-value {
+  color: #7dd3fc;
+  font-weight: 700;
+}
+
+/* Quick Ability Container on Back Face */
+.back-ability-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  width: 100%;
+}
+
+.back-ability-btn {
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  padding: 0.55rem 0.9rem;
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  border: 1px solid rgba(224, 242, 254, 0.3);
+  border-radius: var(--pill-radius);
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+  transition: transform 0.15s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+.back-ability-btn:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.45);
+  transform: translateY(-1px);
+}
+
+.back-ability-btn:active {
+  transform: translateY(1px);
+}
+
+.back-ability-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Ability Status Banner (Visual Confirmation of Activation) */
+.ability-status {
+  font-size: 0.76rem;
+  line-height: 1.4;
+  font-weight: 600;
+  text-align: center;
+  min-height: 1.1rem;
+  color: #7dd3fc;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.ability-status.show-status {
+  opacity: 1;
+  transform: translateY(0);
+  background: rgba(14, 116, 144, 0.25);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #f0f9ff;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
+}
+
+.ability-status.show-status strong {
+  color: #38bdf8;
+  letter-spacing: 0.04em;
+}
+
+/* Active State (Pure Glow on Back Face - No 3D Flattening) */
+.trading-card.ability-active .card-back {
+  animation: backFaceGlow 0.8s ease;
+}
+
+@keyframes backFaceGlow {
+  0%, 100% {
+    border-color: var(--card-border);
+    box-shadow: var(--card-shadow);
+  }
+  50% {
+    border-color: rgba(224, 242, 254, 0.8);
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.65), 0 0 10px rgba(125, 211, 252, 0.4);
+  }
+}
+
+/* ==========================================================================
+   Battle Arena Section (Futura Dice Roll & Winner Display)
+   ========================================================================== */
+
+.battle-arena {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 350px;
+  gap: 0.85rem;
+}
+
+/* Battle Action Button */
+.battle-btn {
+  background: linear-gradient(135deg, #0369a1, #0284c7);
+  color: #ffffff;
+  border: 1px solid rgba(186, 230, 253, 0.4);
+  border-radius: var(--pill-radius);
+  padding: 0.72rem 2.2rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35), 0 2px 6px rgba(2, 6, 23, 0.4);
+  transition: transform 0.15s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
+}
+
+.battle-btn:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(56, 189, 248, 0.45);
+}
+
+.battle-btn:active {
+  transform: translateY(1px);
+}
+
+.battle-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Battle Display Container */
+.battle-display {
+  width: 100%;
+  min-height: 10px;
+}
+
+/* Rolling Dice State */
+.battle-rolling {
+  background: rgba(10, 28, 48, 0.85);
+  border: 1px dashed rgba(125, 211, 252, 0.35);
+  border-radius: var(--inner-radius);
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.4);
+  animation: fadeIn 0.2s ease;
+}
+
+.dice-icon {
+  font-size: 2.6rem;
+  display: inline-block;
+  animation: diceShake 0.18s infinite alternate;
+}
+
+.rolling-text {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.vs-text {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+@keyframes diceShake {
+  0% { transform: rotate(-12deg) scale(0.96); }
+  100% { transform: rotate(12deg) scale(1.04); }
+}
+
+/* Battle Outcome Card */
+.battle-card {
+  border-radius: var(--card-radius);
+  padding: 1.15rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Winner Card (Celebratory Futura) */
+.battle-card.winner-card {
+  background: linear-gradient(155deg, rgba(14, 42, 71, 0.95), rgba(8, 25, 45, 0.97));
+  border: 1.5px solid rgba(125, 211, 252, 0.35);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.35), 0 8px 20px rgba(2, 6, 23, 0.5);
+}
+
+/* Defeat / Close Match Card */
+.battle-card.defeat-card {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1.5px solid rgba(244, 63, 94, 0.5);
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.25);
+}
+
+/* WINNER TITLE (Pure Geometric Futura) */
+.battle-winner-title {
+  font-size: 1.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1.15;
+  color: #38bdf8;
+  text-shadow: 0 2px 8px rgba(56, 189, 248, 0.35);
+}
+
+.battle-card.defeat-card .battle-winner-title {
+  color: #f43f5e;
+  text-shadow: 0 2px 8px rgba(244, 63, 94, 0.4);
+}
+
+.battle-summary {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.battle-summary strong {
+  color: #ffffff;
+}
+
+.victory-quote {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #7dd3fc;
+  border-top: 1px solid rgba(125, 211, 252, 0.15);
+  padding-top: 0.4rem;
+  width: 100%;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Responsive Considerations for Small Screens */
+@media (max-width: 380px) {
+  body {
+    padding: 0.75rem;
+  }
+  
+  .card-face {
+    padding: 0.85rem;
+    gap: 0.6rem;
+  }
+  
+  .card-name {
+    font-size: 1.35rem;
+  }
+  
+  .fun-fact-text {
+    font-size: 0.78rem;
+  }
+}

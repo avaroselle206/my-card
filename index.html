@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ava | Digital Trading Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="page-container">
+    <!-- 3D Card Container with Perspective -->
+    <div class="card-container" id="card-container">
+      <article class="trading-card" id="trading-card">
+
+        <!-- ================= FRONT FACE ================= -->
+        <div class="card-face card-front">
+          <!-- Card Holo Sheen Overlay -->
+          <div class="card-sheen" aria-hidden="true"></div>
+
+          <!-- Top Header: Type & Power -->
+          <header class="card-header">
+            <span class="card-type-badge">💧 WATER</span>
+            <div class="card-hp">
+              <span class="hp-label">HP</span>
+              <span class="hp-value">999</span>
+            </div>
+          </header>
+
+          <!-- Card Art / Portrait Section -->
+          <div class="card-art-frame">
+            <div class="art-backdrop">
+              <!-- Inline SVG Avatar / Mascot -->
+              <svg class="art-avatar" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Card character portrait">
+                <circle cx="60" cy="60" r="54" fill="#1e3a8a" stroke="#38bdf8" stroke-width="4" />
+                <circle cx="60" cy="46" r="22" fill="#E0E7FF" />
+                <path d="M26 100C26 78 41 68 60 68C79 68 94 78 94 100" fill="#E0E7FF" />
+                <polygon points="60,20 68,36 86,36 71,46 77,63 60,52 43,63 49,46 34,36 52,36" fill="#38bdf8" />
+              </svg>
+            </div>
+            <span class="card-id-tag">EDITION #001</span>
+          </div>
+
+          <!-- Card Body / Identity -->
+          <section class="card-info">
+            <h1 class="card-name" id="card-name">Ava</h1>
+            <p class="card-major" id="card-major">
+              <span class="major-icon">💻</span> Web Design and Engineering
+            </p>
+
+            <!-- Stats Bar -->
+            <div class="card-stats">
+              <div class="stat-pill">
+                <span class="stat-label">Snack Power</span>
+                <span class="stat-value">78/100</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-label">Nap Quality</span>
+                <span class="stat-value">63/100</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-label">Drizzy Drake</span>
+                <span class="stat-value">94/100</span>
+              </div>
+            </div>
+
+            <!-- Special Ability Section (Card Feature) -->
+            <div class="ability-container" id="ability-container">
+              <div class="ability-header">
+                <span class="ability-icon">🌊</span>
+                <h2 class="ability-title">Irresistible</h2>
+                <span class="ability-tag">SPECIAL MOVE</span>
+              </div>
+              <p class="ability-description">
+                Radiates effortless charm and magnetic energy. Stuns opposing cards and leaves everyone completely captivated.
+              </p>
+            </div>
+          </section>
+
+          <!-- Card Footer -->
+          <footer class="card-footer">
+            <span>Hand-directed by me, built with AI</span>
+          </footer>
+        </div>
+
+        <!-- ================= BACK FACE ================= -->
+        <div class="card-face card-back">
+          <!-- Card Holo Sheen Overlay -->
+          <div class="card-sheen" aria-hidden="true"></div>
+
+          <!-- Back Header -->
+          <header class="card-header back-header">
+            <span class="card-type-badge back-badge">🌊 WATER DECK</span>
+            <span class="back-id">SECRET RARE ★★★</span>
+          </header>
+
+          <!-- Back Center Graphic Emblem -->
+          <div class="back-emblem-wrapper">
+            <div class="back-emblem-ring">
+              <div class="back-emblem-core">
+                <span class="back-emblem-icon">💧</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fun Fact Showcase Block -->
+          <section class="fun-fact-section">
+            <div class="fun-fact-header">
+              <span class="fun-fact-tag">💡 TRAINER FUN FACT</span>
+            </div>
+            <p class="fun-fact-text">
+              Can code full responsive web animations in her sleep, but will happily spend 45 minutes debating between three identical shades of blue while streaming Drake on repeat.
+            </p>
+
+            <!-- Fun Fact Quick Trivia Chips -->
+            <div class="trivia-chips">
+              <div class="trivia-chip">
+                <span class="trivia-label">Soundtrack</span>
+                <span class="trivia-value">Drake (Certified)</span>
+              </div>
+              <div class="trivia-chip">
+                <span class="trivia-label">Fuel Source</span>
+                <span class="trivia-value">Snacks & Matcha</span>
+              </div>
+              <div class="trivia-chip">
+                <span class="trivia-label">Style Mode</span>
+                <span class="trivia-value">Water Type 🌊</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Interactive Ability Activation on Back -->
+          <div class="back-ability-container">
+            <button id="ability-btn" class="ability-button back-ability-btn" type="button">
+              🌊 Activate Irresistible Ability
+            </button>
+            <div id="ability-status" class="ability-status" aria-live="polite"></div>
+          </div>
+
+          <!-- Back Footer -->
+          <footer class="card-footer back-footer">
+            <span>Hand-directed by me, built with AI</span>
+          </footer>
+        </div>
+
+      </article>
+    </div>
+
+    <!-- ================= BATTLE ARENA ================= -->
+    <section class="battle-arena" aria-label="Card Battle Arena">
+      <button id="battle-btn" class="battle-btn" type="button">
+        ⚔️ Battle!
+      </button>
+
+      <!-- Dice-Roll Animation & Big Letters Winner Display -->
+      <div id="battle-display" class="battle-display" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
