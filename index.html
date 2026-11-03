@@ -11,6 +11,16 @@
 </head>
 <body>
 
+  <!-- Site Navigation Bar -->
+  <nav class="site-nav" aria-label="Site navigation">
+    <a href="index.html" class="site-nav-brand">🃏 Ava's Card</a>
+    <div class="site-nav-links">
+      <a href="index.html" class="site-nav-link active" aria-current="page">🃏 My Card</a>
+      <a href="help-faq.html" class="site-nav-link">❓ FAQ</a>
+      <a href="help-contact.html" class="site-nav-link">📬 Contact</a>
+    </div>
+  </nav>
+
   <main class="page-container">
     <!-- 3D Card Container with Perspective -->
     <div class="card-container" id="card-container">
@@ -159,6 +169,21 @@
       <div id="battle-display" class="battle-display" aria-live="polite"></div>
     </section>
   </main>
+
+  <!-- Welcome Modal Overlay -->
+  <div id="welcome-modal" class="welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+    <div class="welcome-card">
+      <div class="welcome-icon">💧</div>
+      <h2 id="welcome-title" class="welcome-title">Welcome to Ava's Card!</h2>
+      <p class="welcome-text">You've discovered a rare Water-type Digital Trading Card. Hover over the card to flip it, or tap the <strong>⚔️ Battle!</strong> button to challenge opponents.</p>
+      <div class="welcome-tips">
+        <span class="welcome-tip">🖱️ Hover = Flip</span>
+        <span class="welcome-tip">🌊 Back = Ability</span>
+        <span class="welcome-tip">⚔️ Below = Battle</span>
+      </div>
+      <button id="welcome-close" class="welcome-btn" type="button">Let's Go! 💧</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -166,3 +166,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+
+// ==========================================================================
+// Welcome Modal (Lab 5 addition)
+// ==========================================================================
+function setupWelcomeModal() {
+  const modal = document.getElementById('welcome-modal');
+  const closeBtn = document.getElementById('welcome-close');
+
+  if (!modal || !closeBtn) return;
+
+  // If already welcomed this session, hide immediately and bail
+  if (sessionStorage.getItem('welcomed')) {
+    modal.style.display = 'none';
+    return;
+  }
+
+  function closeModal() {
+    modal.classList.add('welcome-hiding');
+    setTimeout(() => {
+      modal.style.display = 'none';
+      sessionStorage.setItem('welcomed', '1');
+    }, 400);
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+
+  // Also close on backdrop click (outside the card)
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display !== 'none') {
+      closeModal();
+    }
+  });
+
+  // Focus the close button for accessibility
+  closeBtn.focus();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupWelcomeModal);
+} else {
+  setupWelcomeModal();
+}

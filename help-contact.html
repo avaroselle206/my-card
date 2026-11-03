@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Support | Ava's Digital Trading Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="help.css" />
+</head>
+<body>
+
+  <!-- Site Navigation Bar -->
+  <nav class="site-nav" aria-label="Site navigation">
+    <a href="index.html" class="site-nav-brand">🃏 Ava's Card</a>
+    <div class="site-nav-links">
+      <a href="index.html" class="site-nav-link">🃏 My Card</a>
+      <a href="help-faq.html" class="site-nav-link">❓ FAQ</a>
+      <a href="help-contact.html" class="site-nav-link active" aria-current="page">📬 Contact</a>
+    </div>
+  </nav>
+
+  <!-- ============================= HERO ============================= -->
+  <header class="help-hero">
+    <span class="help-hero-icon" aria-hidden="true">📬</span>
+    <h1 class="help-hero-title">Contact &amp; Support</h1>
+    <p class="help-hero-subtitle">Questions, feedback, or bug reports? We'd love to hear from you.</p>
+  </header>
+
+  <!-- ============================= MAIN CONTENT ============================= -->
+  <main class="help-content" id="main-content">
+
+    <!-- Success Banner (hidden until form submitted) -->
+    <div
+      class="success-banner"
+      id="success-banner"
+      role="alert"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      ✅ <strong>Message sent successfully!</strong> Thanks for reaching out — we'll get back to you within 24–48 hours. 💧
+    </div>
+
+    <!-- Two-Column Grid -->
+    <div class="contact-grid">
+
+      <!-- =================== LEFT: CONTACT FORM =================== -->
+      <section aria-labelledby="form-heading">
+        <form
+          class="contact-form"
+          id="contact-form"
+          novalidate
+          aria-label="Contact support form"
+        >
+          <h2 class="contact-form-title" id="form-heading">📝 Send a Message</h2>
+
+          <!-- Name Field -->
+          <div class="form-group">
+            <label class="form-label" for="field-name">
+              Name <span class="required-star" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="form-input"
+              type="text"
+              id="field-name"
+              name="name"
+              placeholder="Your full name"
+              autocomplete="name"
+              aria-required="true"
+              aria-describedby="error-name"
+            />
+            <span
+              class="form-field-error"
+              id="error-name"
+              role="alert"
+              aria-live="polite"
+              style="display: none;"
+            >Please enter your name.</span>
+          </div>
+
+          <!-- Email Field -->
+          <div class="form-group">
+            <label class="form-label" for="field-email">
+              Email <span class="required-star" aria-hidden="true">*</span>
+            </label>
+            <input
+              class="form-input"
+              type="email"
+              id="field-email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              aria-required="true"
+              aria-describedby="error-email"
+            />
+            <span
+              class="form-field-error"
+              id="error-email"
+              role="alert"
+              aria-live="polite"
+              style="display: none;"
+            >Please enter a valid email address.</span>
+          </div>
+
+          <!-- Subject Field -->
+          <div class="form-group">
+            <label class="form-label" for="field-subject">Subject</label>
+            <select
+              class="form-select"
+              id="field-subject"
+              name="subject"
+              aria-label="Message subject"
+            >
+              <option value="general">General Question</option>
+              <option value="bug">Bug Report</option>
+              <option value="feature">Feature Request</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Message Field -->
+          <div class="form-group">
+            <label class="form-label" for="field-message">
+              Message <span class="required-star" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              class="form-textarea"
+              id="field-message"
+              name="message"
+              placeholder="Tell us what's on your mind…"
+              aria-required="true"
+              aria-describedby="error-message"
+            ></textarea>
+            <span
+              class="form-field-error"
+              id="error-message"
+              role="alert"
+              aria-live="polite"
+              style="display: none;"
+            >Please enter a message before submitting.</span>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="help-btn" style="align-self: flex-start;">
+            🌊 Send Message
+          </button>
+        </form>
+      </section>
+
+      <!-- =================== RIGHT: SUPPORT INFO CARDS =================== -->
+      <section aria-labelledby="support-info-heading">
+        <h2 class="support-cards-title" id="support-info-heading">💡 Support Info</h2>
+        <div class="support-cards">
+
+          <!-- Email Card -->
+          <div class="support-card">
+            <span class="support-card-icon" aria-hidden="true">📧</span>
+            <div class="support-card-body">
+              <span class="support-card-label">Email</span>
+              <span class="support-card-value">
+                <a href="mailto:support@avastradingcard.dev">support@avastradingcard.dev</a>
+              </span>
+            </div>
+          </div>
+
+          <!-- Response Time Card -->
+          <div class="support-card">
+            <span class="support-card-icon" aria-hidden="true">🕐</span>
+            <div class="support-card-body">
+              <span class="support-card-label">Response Time</span>
+              <span class="support-card-value">Usually within 24–48 hours</span>
+            </div>
+          </div>
+
+          <!-- Course Card -->
+          <div class="support-card">
+            <span class="support-card-icon" aria-hidden="true">🎓</span>
+            <div class="support-card-body">
+              <span class="support-card-label">Course</span>
+              <span class="support-card-value">CSEN 163 — Web Design &amp; Engineering, Santa Clara University</span>
+            </div>
+          </div>
+
+          <!-- Fun Water Tip Card -->
+          <div class="support-card tip-card">
+            <span class="support-card-icon" aria-hidden="true">💧</span>
+            <div class="support-card-body">
+              <span class="support-card-label">Pro Tip</span>
+              <span class="support-card-value">
+                Hover over the card to flip it and activate the Irresistible ability on the back!
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /contact-grid -->
+
+  </main>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="help-footer">
+    Hand-directed by Ava, built with AI &nbsp;·&nbsp; <a href="index.html">🃏 Back to Card</a> &nbsp;·&nbsp; <a href="help-faq.html">❓ FAQ</a>
+  </footer>
+
+  <!-- ============================= FORM VALIDATION SCRIPT ============================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      var form          = document.getElementById('contact-form');
+      var successBanner = document.getElementById('success-banner');
+
+      var fieldName    = document.getElementById('field-name');
+      var fieldEmail   = document.getElementById('field-email');
+      var fieldMessage = document.getElementById('field-message');
+
+      var errorName    = document.getElementById('error-name');
+      var errorEmail   = document.getElementById('error-email');
+      var errorMessage = document.getElementById('error-message');
+
+      // ----------------------------------------------------------------
+      // Helpers
+      // ----------------------------------------------------------------
+      function showError(input, errorEl, message) {
+        input.classList.add('input-error');
+        errorEl.textContent = message;
+        errorEl.style.display = 'flex';
+      }
+
+      function clearError(input, errorEl) {
+        input.classList.remove('input-error');
+        errorEl.style.display = 'none';
+      }
+
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+      }
+
+      // ----------------------------------------------------------------
+      // Live validation — clear errors as user types / changes value
+      // ----------------------------------------------------------------
+      fieldName.addEventListener('input', function () {
+        if (fieldName.value.trim().length > 0) {
+          clearError(fieldName, errorName);
+        }
+      });
+
+      fieldEmail.addEventListener('input', function () {
+        if (isValidEmail(fieldEmail.value)) {
+          clearError(fieldEmail, errorEmail);
+        }
+      });
+
+      fieldMessage.addEventListener('input', function () {
+        if (fieldMessage.value.trim().length > 0) {
+          clearError(fieldMessage, errorMessage);
+        }
+      });
+
+      // ----------------------------------------------------------------
+      // Submit handler
+      // ----------------------------------------------------------------
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var valid = true;
+
+        // Validate Name
+        if (fieldName.value.trim() === '') {
+          showError(fieldName, errorName, 'Please enter your name.');
+          valid = false;
+        } else {
+          clearError(fieldName, errorName);
+        }
+
+        // Validate Email
+        if (fieldEmail.value.trim() === '') {
+          showError(fieldEmail, errorEmail, 'Please enter your email address.');
+          valid = false;
+        } else if (!isValidEmail(fieldEmail.value)) {
+          showError(fieldEmail, errorEmail, 'Please enter a valid email address.');
+          valid = false;
+        } else {
+          clearError(fieldEmail, errorEmail);
+        }
+
+        // Validate Message
+        if (fieldMessage.value.trim() === '') {
+          showError(fieldMessage, errorMessage, 'Please enter a message before submitting.');
+          valid = false;
+        } else {
+          clearError(fieldMessage, errorMessage);
+        }
+
+        // If all valid, show success banner and reset form
+        if (valid) {
+          successBanner.classList.add('visible');
+          form.reset();
+
+          // Scroll banner into view
+          successBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+          // Auto-hide success banner after 8 seconds
+          setTimeout(function () {
+            successBanner.classList.remove('visible');
+          }, 8000);
+        } else {
+          // Focus the first field with an error for accessibility
+          var firstError = form.querySelector('.input-error');
+          if (firstError) firstError.focus();
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
